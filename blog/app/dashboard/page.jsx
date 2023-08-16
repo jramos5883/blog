@@ -9,7 +9,7 @@ export default async function Dashboard() {
   } = await supabase.auth.getSession();
 
   if (!session) {
-    redirect("/");
+    redirect("/signin");
   }
 
   const { data } = await supabase.from("posts").select();

@@ -6,8 +6,8 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function SignIn() {
-  const router = useRouter();
   const supabase = createClientComponentClient();
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +24,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="bg-fuchsia-300 flex justify-center mx-auto">
+    <div className="bg-fuchsia-300 h-screen flex items-center justify-center">
       <div className="flex flex-col">
         <h1>Sign In Page!</h1>
         <form className="flex flex-col">

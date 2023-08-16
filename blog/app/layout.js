@@ -1,5 +1,5 @@
 import Navbar from "./navbar";
-import Login from "./login";
+// import Login from "./login";
 
 import "./globals.css";
 
@@ -8,7 +8,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Navbar />
-        <Login />
+        {/* <Login /> */}
         {children}
       </body>
     </html>
