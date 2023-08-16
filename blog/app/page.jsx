@@ -13,11 +13,6 @@ export default async function LandingPage() {
   if (session) {
     redirect("/dashboard");
   }
-  const { data } = await supabase.from("posts").select();
-  return (
-    <pre>
-      <h1>Landing Page!</h1>
-      {JSON.stringify(data, null, 2)}
-    </pre>
-  );
+
+  return <div className="bg-fuchsia-300 h-screen">Landing Page!</div>;
 }

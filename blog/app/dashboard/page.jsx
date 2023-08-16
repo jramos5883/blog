@@ -11,5 +11,13 @@ export default async function Dashboard() {
   if (!session) {
     redirect("/");
   }
-  return <div>Dashboard</div>;
+
+  const { data } = await supabase.from("posts").select();
+
+  return (
+    <div>
+      <div>Dashboard</div>
+      <pre>{JSON.stringify(data, null, 2)}</pre>;
+    </div>
+  );
 }
