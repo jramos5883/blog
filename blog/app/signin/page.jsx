@@ -43,10 +43,12 @@ export default function SignIn() {
             onChange={(event) => setPassword(event.target.value)}
           />
           <button className="bg-fuchsia-500" onClick={handleSignIn}>
-            Sign in
+            Sign In
           </button>
           <p>Don&apos;t have an account? Sign up here!</p>
-          <Link href="/signup">Sign Up</Link>
+          <button className="bg-fuchsia-500">
+            <Link href="/signup">Sign Up</Link>
+          </button>
         </form>
       </div>
     </div>
