@@ -24,11 +24,9 @@ export default function SignOut() {
   };
 
   useEffect(() => {
-    const { data: session } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setSession(session);
-      }
-    );
+    const { data: session } = supabase.auth.onAuthStateChange((session) => {
+      setSession(session);
+    });
     setSession(session);
     return () => {
       session.unsubscribe();

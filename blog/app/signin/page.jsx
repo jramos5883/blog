@@ -17,7 +17,26 @@ export default function SignIn() {
     try {
       await supabase.auth.signInWithPassword({ email, password });
       router.push("/dashboard"); // Redirect to dashboard after signing in
-      router.refresh();
+      router.refresh(); // Refresh the page to get the session
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleGoogleSignIn = async (event) => {
+    event.preventDefault();
+    try {
+      await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          queryParams: {
+            access_type: "offline",
+            prompt: "consent",
+          },
+        },
+      });
+      router.push("/dashboard"); // Redirect to dashboard after signing in
+      router.refresh(); // Refresh the page to get the session
     } catch (error) {
       console.log(error);
     }
@@ -49,6 +68,14 @@ export default function SignIn() {
           <button className="bg-fuchsia-500">
             <Link href="/signup">Sign Up</Link>
           </button>
+          <div className="pt-4">
+            <button
+              className="bg-fuchsia-500 w-full"
+              onClick={handleGoogleSignIn}
+            >
+              Sign In with Google
+            </button>
+          </div>
         </form>
       </div>
     </div>
