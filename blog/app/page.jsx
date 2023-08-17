@@ -1,18 +1,15 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
 export default async function LandingPage() {
   const supabase = createServerComponentClient({ cookies });
+
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  if (session) {
-    redirect("/dashboard");
-  }
-
-  return <div className="bg-fuchsia-300 h-screen">Landing Page!</div>;
+  return <div>Landing Page!</div>;
 }
