@@ -13,6 +13,7 @@ export default function Navbar() {
       >
         Login
       </Link>
+      <Link href="/">Landing Page</Link>
     </div>
   );
 }
