@@ -16,6 +16,9 @@ export default function SignUpPage() {
     });
     if (error) {
       console.log(error);
+    } else {
+      setEmail("");
+      setPassword("");
     }
   };
 
