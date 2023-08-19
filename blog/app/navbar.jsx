@@ -1,19 +1,47 @@
 import LogoutButton from "@/components/LogoutButton";
 import Link from "next/link";
 
-export default function Navbar() {
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { GiFlamingTrident } from "react-icons/gi";
+
+export default async function Navbar() {
+  const supabase = createServerComponentClient({ cookies });
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
   return (
-    <div className="h-20 bg-fuchsia-700">
-      <div className="flex items-center gap-4">
-        <LogoutButton />
+    <div className="h-20 bg-fuchsia-700 flex flex-row items-center place-content-between">
+      <div className="">
+        <Link href="/">
+          <span className="text-5xl">
+            <GiFlamingTrident />
+          </span>
+        </Link>
       </div>
-      <Link
-        href="/login"
-        className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-      >
-        Login
-      </Link>
-      <Link href="/">Landing Page</Link>
+      <div className="flex items-center gap-4">
+        <div className="flex items-center p-4">
+          <Link href="/dashboard">Dashboard</Link>
+        </div>
+
+        <div className="flex items-center p-4">
+          <Link href="/dashboard/profiles">Profile</Link>
+        </div>
+
+        {session ? (
+          <div className="flex items-center p-4">
+            <LogoutButton />
+          </div>
+        ) : (
+          <div className="flex items-center p-4">
+            <Link href="/login" className="flex items-center p-4">
+              Login
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

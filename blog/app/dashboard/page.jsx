@@ -8,8 +8,12 @@ export default async function Dashboard() {
   const supabase = createServerComponentClient({ cookies });
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  return <div>Dashboard!Hey, {user.email}!</div>;
+  if (!session) {
+    redirect("/");
+  }
+
+  return <div className="bg-fuchsia-300 h-screen">Dashboard!</div>;
 }
