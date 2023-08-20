@@ -14,7 +14,7 @@ export default async function Navbar() {
 
   return (
     <div className="h-20 bg-fuchsia-700 flex flex-row items-center place-content-between">
-      <div className="">
+      <div className="px-2">
         <Link href="/">
           <span className="text-5xl">
             <GiFlamingTrident />

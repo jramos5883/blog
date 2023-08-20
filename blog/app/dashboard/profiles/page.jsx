@@ -20,7 +20,7 @@ export default async function Profiles() {
 
   return (
     <div className="bg-fuchsia-300 h-screen">
-      Profile Page!
+      Profile Info!
       <pre>{JSON.stringify(profiles, null, 2)}</pre>
       <p>{user?.user_name}</p>
       <p>{user?.first_name}</p>
