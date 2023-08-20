@@ -22,13 +22,19 @@ export default async function Navbar() {
         </Link>
       </div>
       <div className="flex items-center gap-4">
-        <div className="flex items-center p-4">
-          <Link href="/dashboard">Dashboard</Link>
-        </div>
+        {session ? (
+          <>
+            <div className="flex items-center p-4">
+              <Link href="/dashboard">Dashboard</Link>
+            </div>
 
-        <div className="flex items-center p-4">
-          <Link href="/dashboard/profiles">Profile</Link>
-        </div>
+            <div className="flex items-center p-4">
+              <Link href="/dashboard/profiles">Profile</Link>
+            </div>
+          </>
+        ) : (
+          <div></div>
+        )}
 
         {session ? (
           <div className="flex items-center p-4">

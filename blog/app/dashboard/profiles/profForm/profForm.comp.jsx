@@ -1,6 +1,7 @@
 "use client";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function ProfForm({ session }) {
@@ -9,15 +10,19 @@ export default function ProfForm({ session }) {
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [avatar_url, setAvatar_url] = useState("");
+  const router = useRouter();
 
   const updateProfile = async (event) => {
     event.preventDefault();
-    const { data, error } = await supabase.from("profiles").upsert({
-      user_name,
-      first_name,
-      last_name,
-      avatar_url,
-    });
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({
+        user_name,
+        first_name,
+        last_name,
+        avatar_url,
+      })
+      .eq("prof_id", session.user.id); // Add WHERE clause here
     if (data) {
       console.log(data);
       setUser_name("");
@@ -25,6 +30,7 @@ export default function ProfForm({ session }) {
       setLast_name("");
       setAvatar_url("");
     }
+    router.refresh();
     if (error) {
       console.log(error);
     }
