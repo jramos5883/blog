@@ -14,6 +14,6 @@ export default async function Dashboard() {
   if (!session) {
     redirect("/");
   }
-
+  //Need to plan where the dashboard will be in the app
   return <div className="bg-fuchsia-300 h-screen">Dashboard!</div>;
 }

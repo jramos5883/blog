@@ -92,7 +92,6 @@ export default function ProfForm({ session }) {
           placeholder="Avatar Url"
           required
         />
-
         <button
           className="border border-gray-700 rounded px-4 py-2 text-black mb-2 bg-fuchsia-600"
           type="submit"
